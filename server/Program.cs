@@ -1,8 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using server.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+// Registered with the dependency injection container
+builder.Services.AddDbContext<ShipContext>(options => {
+    options.UseInMemoryDatabase("ShipDB");
+});
 
 builder.Services.AddCors();
 
