@@ -12,7 +12,7 @@ public class Ship
     public string Name { get; set; } = null!;
 
     [Required]
-    [RegularExpression(@"^[A-Za-z]{4}-\d{4}-[A-Za-z]\d$",
+    [RegularExpression(@"^[A-Z]{4}-\d{4}-[A-Z]\d$",
          ErrorMessage = "The property Code should follow the required 'AAAA-1111-A1' pattern.")]
     public string Code { get; set; } = null!;
 

@@ -1,0 +1,30 @@
+.card {
+  border: 1px solid black;
+  border-radius: 12px;
+  margin: 3px 0;
+  padding: 6px;
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 6px;
+}
+
+.amend {
+  cursor: pointer;
+  background: blue;
+  padding: 3px;
+  color: white;
+  font-weight: bold;
+}
+
+.delete {
+  cursor: pointer;
+  background: red;
+  padding: 3px;
+  color: white;
+  font-weight: bold;
+}
