@@ -4,9 +4,21 @@ namespace server.Models;
 
 public class Ship
 {
+    [Required]
     public long Id { get; set; }
-    public string Name { get; set; } = null!; 
-    public string Code { get; set; } = null!; // AAAA-1111-A1
+
+    [Required]
+    [StringLength(25, MinimumLength = 3, ErrorMessage = "The property Name should have a minimum length of 3 characters and not exceed 25 characters.")]
+    public string Name { get; set; } = null!;
+
+    [Required]
+    [RegularExpression(@"^[A-Za-z]{4}-\d{4}-[A-Za-z]\d$",
+         ErrorMessage = "The property Code should follow the required 'AAAA-1111-A1' pattern.")]
+    public string Code { get; set; } = null!;
+
+    [Required]
     public float Length { get; set; }
+
+    [Required]
     public float Width { get; set; }
 }

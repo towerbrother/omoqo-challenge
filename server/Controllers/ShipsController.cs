@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using server.ActionFilters;
 using server.Data;
 using server.Models;
 
@@ -40,6 +41,7 @@ namespace server.Controllers
         // PUT: api/Ships/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> PutShip(long id, Ship ship)
         {
             if (id != ship.Id)
@@ -71,6 +73,7 @@ namespace server.Controllers
         // POST: api/Ships
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<ActionResult<Ship>> PostShip(Ship ship)
         {
             _context.Ships.Add(ship);
