@@ -6,14 +6,99 @@ Create a simple application that illustrates your skills. The application will a
 
 The deliverable must be in a public GitHub repository. You can assume that reviewers will have Visual Studio Code and Docker installed. You must create a readme that contains all instructions required to run your application. No infrastructural requirements are permitted – your solution must run locally. We would suggest that you mock the database (memory or file is fine).
 
-## Implementation
-
-Coming soon...
-
 ## Instructions
 
-Coming soon...
+1. Clone the repository
+
+Clone using the web URL.
+
+```bash
+git clone https://github.com/towerbrother/omoqo-challenge.git
+```
+
+Or, use a password-protected SSH key.
+
+```bash
+git clone git@github.com:towerbrother/omoqo-challenge.git
+```
+
+Finally, navigate into the newly cloned repository.
+
+```bash
+cd omoqo-challenge
+```
+
+2. Server Application
+
+Open a new terminal window and navigate to the server app.
+
+```bash
+cd server
+```
+
+Restore the dependencies.
+
+```bash
+dotnet restore
+```
+
+Build the project.
+
+```bash
+dotnet build
+```
+
+Run the project.
+
+```bash
+dotnet run
+```
+
+You can access and test the API using either Swagger at [http://localhost:5161/swagger/index.html](http://localhost:5161/swagger/index.html) or any other REST API Client of choice (i.e. Postman, ThunderClient, etc.).
+
+Note, the base URL for the API endpoints is http://localhost:5161/api/Ships.
+
+Important, you can test the API using any REST API Client of your choice, or run the client app as well.
+
+3. Client Application
+
+Open a new terminal window and navigate to the client app.
+
+```bash
+cd client
+```
+
+Install dependencies.
+
+```bash
+npm install
+```
+
+Run the development server.
+
+```bash
+npm run dev
+```
+
+Access the client app at [http://localhost:3000](http://localhost:3000)
+
+## Implementation
+
+1. Server App
+
+The server app is a simple dotnet webapi application that allows the user to perform CRUD (Create, Read, Update & Delete) operations on a ship.
+
+Following the instructions provided, I implemented some basic validation using a custom action filter.
+
+2. Client App
 
 ## Further improvements
 
-Coming soon...
+Few ideas to improve the application could be:
+
+- server - leverage DTOs to reduce the amount of information being transferred
+- server - more specific CORS policies
+- server - extra validation to prevent ships with the same code to be submitted
+- client - better handling of client side errors leveraging error boundaries
+- client - better design
+- client - use better id more reliable IDs generation method
