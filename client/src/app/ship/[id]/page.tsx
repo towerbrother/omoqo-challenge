@@ -1,6 +1,6 @@
 import { fetchShip } from "@/services";
 import styles from "./page.module.css";
-import AmendForm from "@/components/Form/AmendForm";
+import Form from "@/components/Form/Form";
 
 type PageProps = {
   params: { id: string };
@@ -11,7 +11,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <main className={styles.main}>
-      <AmendForm ship={ship} />
+      <Form ship={ship} />
     </main>
   );
 }

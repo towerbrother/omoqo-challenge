@@ -3,9 +3,13 @@
 import { useFormState } from "react-dom";
 import styles from "./Form.module.css";
 import { FormState, Ship } from "@/types";
-import { createShip } from "@/services";
+import { amendShip, createShip } from "@/services";
 import SubmitButton from "./SubmitButton";
 import FieldError from "./FieldError";
+
+type Props = {
+  ship?: Ship;
+};
 
 export const EMPTY_FORM_STATE: FormState = {
   status: "UNSET" as const,
@@ -13,11 +17,16 @@ export const EMPTY_FORM_STATE: FormState = {
   message: "",
 };
 
-export default function CreateForm() {
-  const [formState, formAction] = useFormState(createShip, EMPTY_FORM_STATE);
+export default function Form({ ship }: Props) {
+  const isAmend = Boolean(ship && ship.id);
+
+  const action = isAmend ? amendShip : createShip;
+
+  const [formState, formAction] = useFormState(action, EMPTY_FORM_STATE);
 
   return (
-    <form action={formAction} className={styles.form} method="POST">
+    <form action={formAction} className={styles.form}>
+      {isAmend && <input type="hidden" name="id" value={ship?.id} />}
       {/* name */}
       <div className={styles.block}>
         <div className={styles.labelWithError}>
@@ -35,6 +44,7 @@ export default function CreateForm() {
           autoComplete="off"
           name="name"
           placeholder="Name..."
+          defaultValue={isAmend ? ship?.name : undefined}
         />
       </div>
       {/* code */}
@@ -54,6 +64,7 @@ export default function CreateForm() {
           autoComplete="off"
           name="code"
           placeholder="AAAA-1111-A1"
+          defaultValue={isAmend ? ship?.code : undefined}
         />
       </div>
       {/* length */}
@@ -76,6 +87,7 @@ export default function CreateForm() {
           autoComplete="off"
           placeholder="Length..."
           className={styles.input}
+          defaultValue={isAmend ? Number(ship?.length) : undefined}
         />
       </div>
       {/* width */}
@@ -98,9 +110,10 @@ export default function CreateForm() {
           autoComplete="off"
           placeholder="Width..."
           className={styles.input}
+          defaultValue={isAmend ? Number(ship?.width) : undefined}
         />
       </div>
-      <SubmitButton className={styles.button} />
+      <SubmitButton id={ship?.id?.toString()} className={styles.button} />
     </form>
   );
 }

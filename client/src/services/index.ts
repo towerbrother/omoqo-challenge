@@ -75,7 +75,7 @@ export const amendShip = async (formState: FormState, formData: FormData) => {
       name: formData.get("name"),
       code: formData.get("code"),
       length: Number(formData.get("length") as string),
-      width: Number(formData.get("length") as string),
+      width: Number(formData.get("width") as string),
     });
 
     const body = {

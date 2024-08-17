@@ -1,14 +1,14 @@
 import styles from "./page.module.css";
 import { fetchShips } from "@/services";
 import Card from "@/components/Card/Card";
-import CreateForm from "@/components/Form/CreateForm";
+import Form from "@/components/Form/Form";
 
 export default async function Home() {
   const ships = await fetchShips();
 
   return (
     <main className={styles.main}>
-      <CreateForm />
+      <Form />
       <div className={styles.cards}>
         {ships && ships.length > 0 ? (
           ships.map((ship) => <Card key={ship.id} ship={ship} />)
