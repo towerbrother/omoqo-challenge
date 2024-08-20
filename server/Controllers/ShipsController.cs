@@ -39,7 +39,6 @@ namespace server.Controllers
         }
 
         // PUT: api/Ships/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> PutShip(long id, Ship ship)
@@ -71,7 +70,6 @@ namespace server.Controllers
         }
 
         // POST: api/Ships
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<ActionResult<Ship>> PostShip(Ship ship)
@@ -87,6 +85,7 @@ namespace server.Controllers
         public async Task<IActionResult> DeleteShip(long id)
         {
             var ship = await _context.Ships.FindAsync(id);
+
             if (ship == null)
             {
                 return NotFound();

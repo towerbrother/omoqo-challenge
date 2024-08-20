@@ -96,9 +96,10 @@ Following the instructions provided, I implemented some basic validation using a
 
 Few ideas to improve the application could be:
 
-- server - leverage DTOs to reduce the amount of information being transferred
-- server - more specific CORS policies
+- server - leverage DTOs to reduce over posting
 - server - extra validation to prevent ships with the same code to be submitted
+- server - more specific CORS policies
 - client - better handling of client side errors leveraging error boundaries
 - client - better design
-- client - use better id more reliable IDs generation method
+- client - use more reliable IDs generation method
+- ...
